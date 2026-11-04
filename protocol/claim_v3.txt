@@ -1,0 +1,22 @@
+CLAIM v3 — VLM ATTRIBUTE-LEVEL PERCEPTION GAP (EXPLORATORY)
+
+Claim
+We test whether attribute-level Gap = A − C is predicted by P1 (language prior) and P2 (encoder-feature separability), computed before VLM answer scoring, and whether the prediction transfers to unseen attributes (LOAO) and unseen models (LOMO).
+
+Predictors
+- P1 (language prior): primary.
+- P2 (encoder-feature separability): primary.
+- P3 (projector bandwidth): sensitivity analysis only. P3 is not part of the primary predictive law and is not used to support any primary claim.
+
+Novelty boundary
+Gap existence is not claimed as new. Prior work (BlindTest, Theodoridis et al., Chen et al.) already reports probe-versus-VLM-answer gaps. The contribution is attribute-level prediction from pre-answer predictors and held-out transfer to unseen attributes and models.
+
+Status
+Exploratory. LOAO and LOMO are generalisation checks, not confirmatory tests.
+Success criterion for the generalisation checks is defined in kill_conditions.md (H4): pooled out-of-fold LOAO R² ≥ 0.10 and LOMO R² ≥ 0.10, each with a 95% cluster-bootstrap CI lower bound above 0.
+
+Operational meaning
+- VLM checkpoints are frozen, already-pretrained public checkpoints. No task-specific training, fine-tuning or weight updates.
+- P1 is computed from a fixed caption corpus; P2 from frozen encoder features and attribute labels. Both are computed before VLM answer scoring.
+- Linear probes are diagnostic readouts only. They measure A (encoder) and B (projected tokens) and do not update any VLM weights.
+- "Pre-answer" means computed before VLM answer scoring. It does not mean before original VLM pre-training.
